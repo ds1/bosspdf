@@ -3,15 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BossPDF - Full Webpage Screenshot to PDF</title>
-    <meta name="description" content="Capture full webpage screenshots and save as PDF with one click">
+    <title>BossPDF - Professional Webpage Screenshots to PDF | One-Click Full Page Capture</title>
+    
+    <!-- Enhanced Meta Tags -->
+    <meta name="description" content="Transform any webpage into a professional PDF with one click. BossPDF captures full-length screenshots instantly, perfect for business, research, and documentation.">
+    <meta name="keywords" content="webpage to pdf, screenshot to pdf, full page capture, professional pdf converter, website pdf tool">
+    <meta property="og:title" content="BossPDF - Professional Webpage Screenshots to PDF">
+    <meta property="og:description" content="Transform any webpage into a professional PDF with one click. Perfect for business and research.">
+    <meta property="og:image" content="https://bosspdf.com/images/og-image.png">
+    <meta property="og:url" content="https://bosspdf.com">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="icons/icon48.png">
+    <style>
+        .testimonial-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .testimonial-slide {
+            transition: transform 0.5s ease-in-out;
+            position: absolute;
+            width: 100%;
+            transform: translateX(100%);
+        }
+        .testimonial-slide.active {
+            transform: translateX(0);
+            position: relative;
+        }
+        .testimonial-slide.prev {
+            transform: translateX(-100%);
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #E5E7EB;
+            margin: 0 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .dot.active {
+            background-color: #2962FF;
+        }
+        .hero-heading {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 2rem auto;
+            padding: 2rem;
+            max-width: 800px;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-white shadow-sm">
+        <header class="bg-white shadow-sm sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-between">
                 <div class="flex items-center">
                     <img src="icons/icon128.png" alt="BossPDF Logo" class="h-12 w-12">
@@ -24,18 +102,105 @@
             </div>
         </header>
 
-        <!-- Main Content -->
         <main class="flex-grow">
-            <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-                    <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Capture Like a Boss</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-                            Full webpage screenshots made easy
-                        </p>
-                        <p class="mt-5 text-xl text-gray-500">
-                            Capture entire webpages with a single click and save them as professional PDFs. No more stitching screenshots together!
-                        </p>
+            <!-- Hero Section -->
+            <div class="max-w-7xl mx-auto px-4 pt-8 sm:px-6 lg:px-8">
+                <div>
+                    <h2 class="hero-heading font-extrabold text-blue-600 tracking-tight uppercase mb-8">
+                        CAPTURE PDFs LIKE A BOSS
+                    </h2>
+                    <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                        Full webpage screenshots made easy
+                    </p>
+                    <p class="mt-5 text-xl text-gray-500">
+                        Transform any webpage into a professional PDF with a single click. No more scrolling or stitching screenshots together!
+                    </p>
+                    
+                    <!-- Testimonials Section -->
+                    <div class="bg-white py-12 mt-8">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-8">
+                                What People Are Saying
+                            </h2>
+                        <div class="testimonial-container h-80">
+                            <div class="testimonial-slide">
+                                <div class="text-center">
+                                    <div class="mb-6">
+                                        <img src="./avatars/1.png" alt="Sarah Johnson" class="w-16 h-16 rounded-full mx-auto object-cover">
+                                    </div>
+                                    <p class="text-xl text-gray-600 italic">"BossPDF has completely transformed how I save web content. No more scrolling screenshots!"</p>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Sarah Johnson</h3>
+                                        <p class="text-gray-500">Digital Marketing Manager</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-slide">
+                                <div class="text-center">
+                                    <div class="mb-6">
+                                        <img src="./avatars/2.png" alt="Michael Chen" class="w-16 h-16 rounded-full mx-auto object-cover">
+                                    </div>
+                                    <p class="text-xl text-gray-600 italic">"The easiest PDF capture tool I've ever used. Clean, simple, and it just works."</p>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Michael Chen</h3>
+                                        <p class="text-gray-500">Software Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-slide">
+                                <div class="text-center">
+                                    <div class="mb-6">
+                                        <img src="./avatars/3.png" alt="Dr. Emily Roberts" class="w-16 h-16 rounded-full mx-auto object-cover">
+                                    </div>
+                                    <p class="text-xl text-gray-600 italic">"Perfect for archiving research papers and articles. Saves me hours of work every week."</p>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Dr. Emily Roberts</h3>
+                                        <p class="text-gray-500">Research Scientist</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-slide">
+                                <div class="text-center">
+                                    <div class="mb-6">
+                                        <img src="/avatars/4.png" alt="James Wilson" class="w-16 h-16 rounded-full mx-auto object-cover">
+                                    </div>
+                                    <p class="text-xl text-gray-600 italic">"Finally, a screenshot tool that understands what professionals need. Highly recommended!"</p>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">James Wilson</h3>
+                                        <p class="text-gray-500">Business Analyst</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-slide">
+                                <div class="text-center">
+                                    <div class="mb-6">
+                                        <img src="/avatars/5.png" alt="Lisa Martinez" class="w-16 h-16 rounded-full mx-auto object-cover">
+                                    </div>
+                                    <p class="text-xl text-gray-600 italic">"The quality of the PDFs is exceptional. It's become an essential tool in my workflow."</p>
+                                    <div class="mt-4">
+                                        <h3 class="text-lg font-medium text-gray-900">Lisa Martinez</h3>
+                                        <p class="text-gray-500">UX Designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Navigation Dots -->
+                        <div class="flex justify-center space-x-2 mt-6">
+                            <button class="dot active" data-index="0"></button>
+                            <button class="dot" data-index="1"></button>
+                            <button class="dot" data-index="2"></button>
+                            <button class="dot" data-index="3"></button>
+                            <button class="dot" data-index="4"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo -->
+                    <div class="mt-8 relative rounded-lg shadow-lg overflow-hidden">
+                        <img src="./demo/demo.svg" alt="BossPDF in action" class="w-full">
+                    </div>
+
                         <div class="mt-8">
                             <h3 class="text-lg font-semibold text-gray-900">Key Features:</h3>
                             <ul class="mt-4 space-y-4">
@@ -60,25 +225,154 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                        <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                            <img class="w-full" src="icons/icon128.png" alt="BossPDF Extension Icon">
-                        </div>
-                    </div>
+
+            <!-- Privacy Policy Modal -->
+                <div id="privacyModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-8">Privacy Policy</h2>
+                    <div class="prose max-w-none">
+                    <h3 class="text-xl font-semibold mt-6">Introduction</h3>
+                    <p class="mt-4">BossPDF ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how our Chrome extension handles information when you use it to capture webpages as PDFs.</p>
+
+                    <h3 class="text-xl font-semibold mt-6">Information Collection and Use</h3>
+                    <h4 class="text-lg font-medium mt-4">What We Collect:</h4>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Temporary access to webpage content during capture process</li>
+                        <li>Basic browser information required for the extension to function</li>
+                    </ul>
+
+                    <h4 class="text-lg font-medium mt-4">What We Don't Collect:</h4>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Personal information</li>
+                        <li>Browsing history</li>
+                        <li>Login credentials</li>
+                        <li>Form data</li>
+                        <li>Cookies</li>
+                        <li>Usage statistics</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold mt-6">How We Use Information</h3>
+                    <p class="mt-4">The BossPDF extension only processes webpage content temporarily and locally on your device to:</p>
+                    <ol class="list-decimal pl-5 mt-2">
+                        <li>Capture the webpage content</li>
+                        <li>Convert it to PDF format</li>
+                        <li>Save it to your local downloads folder</li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold mt-6">Data Storage</h3>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>All captured content is processed entirely on your local device</li>
+                        <li>We do not store, transmit, or retain any captured content</li>
+                        <li>PDFs are saved only to your local downloads folder</li>
+                        <li>No data is sent to our servers or third parties</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold mt-6">Required Permissions</h3>
+                    <p class="mt-4">Our extension requires the following permissions:</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li><strong>activeTab:</strong> To capture the current webpage</li>
+                        <li><strong>downloads:</strong> To save the generated PDF</li>
+                        <li><strong>scripting:</strong> To execute the capture process</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold mt-6">Contact Us</h3>
+                    <p class="mt-4">For questions about this Privacy Policy, please contact us at:</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Email: privacy@bosspdf.com</li>
+                        <li>Website: https://bosspdf.com</li>
+                    </ul>
                 </div>
             </div>
         </main>
 
         <!-- Footer -->
-        <footer class="bg-white">
+        <footer class="bg-white mt-16">
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-                <div class="mt-8 md:mt-0">
+                <div class="flex justify-center space-x-6 md:order-2">
+                    <a href="#privacy" class="text-gray-400 hover:text-gray-500">Privacy Policy</a>
+                </div>
+                <div class="mt-8 md:mt-0 md:order-1">
                     <p class="text-center text-base text-gray-400">
-                        &copy; 2024 BossPDF. All rights reserved.
+                        &copy; 2025 BossPDF. All rights reserved.
                     </p>
                 </div>
             </div>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.dot');
+            let currentSlide = 0;
+
+            // Show first slide initially
+            slides[0].classList.add('active');
+
+            // Function to show specific slide
+            function showSlide(index) {
+                // Remove all classes first
+                slides.forEach(slide => {
+                    slide.classList.remove('active', 'prev');
+                    slide.style.transform = 'translateX(100%)';
+                });
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Add appropriate classes
+                slides[currentSlide].classList.add('prev');
+                slides[currentSlide].style.transform = 'translateX(-100%)';
+                
+                currentSlide = index;
+                slides[currentSlide].classList.add('active');
+                slides[currentSlide].style.transform = 'translateX(0)';
+                dots[currentSlide].classList.add('active');
+            }
+
+            // Add click handlers to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+
+            // Auto-rotate slides
+            function nextSlide() {
+                showSlide((currentSlide + 1) % slides.length);
+            }
+
+            // Rotate slides every 4 seconds
+            setInterval(nextSlide, 4000);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('privacyModal');
+            const btn = document.getElementById('privacyButton');
+            const closeBtn = document.querySelector('.close-button');
+
+            btn.onclick = function() {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            }
+
+            closeBtn.onclick = function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+
+            modal.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            }
+
+            // Close modal on escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+        });
+    </script>
 </body>
 </html>
